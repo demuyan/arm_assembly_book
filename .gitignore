@@ -5,8 +5,12 @@
 
 # Compiled Dynamic libraries
 *.so
+*.elf
 
 # Compiled Static libraries
 *.lai
 *.la
 *.a
+
+# backup file
+*.*~
