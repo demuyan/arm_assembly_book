@@ -18,7 +18,8 @@ uint32_t arm_sub_imm(uint32_t v, uint32_t imm) {
 static inline __attribute__((always_inline))
 uint32_t arm_sbc_imm(uint32_t v, uint32_t imm) {
   uint32_t d;
-  asm ("MRS r1,cpsr\n\t"
+  asm (
+       "MRS r1,cpsr\n\t"
        "BIC r1,r1,#0x20000000\n\t"
        "MSR cpsr_f,r1\n\t"
        "SBC %[Rd], %[Rm], %[Imm]\n\t" 
