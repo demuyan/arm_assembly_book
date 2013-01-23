@@ -40,7 +40,7 @@ void uart_puts(char *s) {
 /*
  * 割り込み(IRQ)発生時
  */
-void __attribute__((interrupt)) irq_handler() {
+void irq_handler_func() {
 
   if(*(TIMER0 + TIMER_MIS)) { 
     uart_puts("timer0\n");
