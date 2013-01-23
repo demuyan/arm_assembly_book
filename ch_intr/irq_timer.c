@@ -52,7 +52,7 @@ void __attribute__((interrupt)) irq_handler() {
 /*
  * メイン関数
  */
-int main(void) {
+void main(void) {
 
   /* PIC(Programable Interrupt Controller)にてTimer0, Timer1割り込みを許可する */
   *(PIC + VIC_INTENABLE) = PIC_TIMER01;
@@ -68,6 +68,4 @@ int main(void) {
   enable_irq();
 
   for(;;);
-
-  return 0;
 }
