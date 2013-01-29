@@ -21,7 +21,7 @@ swi_handler_addr: .word halt
 prefetch_abort_handler_addr: .word halt
 data_abort_handler_addr: .word halt
 irq_handler_addr: .word irq_handler
-fiq_handler_addr: .word 
+fiq_handler_addr: .word halt
 vectors_end:  
 
 halt:         b     .
