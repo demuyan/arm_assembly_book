@@ -57,8 +57,8 @@ keep_loading:
 
 /* スーパーバイザーモードに戻る */ 
               MSR   cpsr, r0
-/* main関数へ飛ぶ */
-              BL    main
+/* boot_main関数へ飛ぶ */
+              BL    boot_main
               B     .
 
 /*

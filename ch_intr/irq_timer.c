@@ -52,7 +52,7 @@ void c_irq_handler() {
 /*
  * メイン関数
  */
-void main(void) {
+void boot_main(void) {
 
   /* PIC(Primary Interrupt Controller)にてTimer0, Timer1割り込みを許可する */
   *(PIC + VIC_INTENABLE) = PIC_TIMER01; /////-----(1)
