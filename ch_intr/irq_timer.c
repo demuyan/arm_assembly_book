@@ -49,8 +49,9 @@ void c_irq_handler() {
 
 }
 
+/////begin ch_intr_boot_main
 /*
- * メイン関数
+ * 処理関数
  */
 void boot_main(void) {
 
@@ -69,3 +70,4 @@ void boot_main(void) {
 
   for(;;);                             /////-----(5)
 }
+/////end
