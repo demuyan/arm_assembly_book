@@ -9,10 +9,11 @@ SECTIONS
  .data : { *(.data) }
  .bss : { *(.bss) }
  .stack : {
-  . = ALIGN(4);
   . = . + 0x1000; /* スタックエリア(ソフト, 4kB) */
+  . = ALIGN(4);
   stack_top = .;
   . = . + 0x1000; /* スタックエリア(IRQ, 4kB) */
+  . = ALIGN(4);
   irq_stack_top = .;
  }
 }
