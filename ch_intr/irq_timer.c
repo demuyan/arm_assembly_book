@@ -26,6 +26,7 @@
 #define PIC_TIMER01   0x10
 #define VIC_INTENABLE 0x4 /* 0x10 bytes */
 
+/////begin ch_intr_boot_main2
 /*
  * シリアルへ出力する
  */
@@ -36,19 +37,18 @@ void uart_puts(char *s) {
     s++;
   }
 }
-
 /*
  * 割り込み(IRQ)発生時
  */
-void c_irq_handler() {
-
-  if(*(TIMER0 + TIMER_MIS)) { 
-    uart_puts("timer0\n");
-    *(TIMER0 + TIMER_INTCLR) = 1; /* 割り込みをクリアーする */
+void c_irq_handler() {            
+  if(*(TIMER0 + TIMER_MIS)) {     /////-----(d)                             
+    /* 文字列をシリアルに出力する */
+    uart_puts("timer0\n");        /////-----(e)                        
+    /* 割り込みをクリアーする */ 
+    *(TIMER0 + TIMER_INTCLR) = 1; /////-----(f)                        
   }
-
 }
-
+/////end
 /////begin ch_intr_boot_main
 /*
  * 処理関数
