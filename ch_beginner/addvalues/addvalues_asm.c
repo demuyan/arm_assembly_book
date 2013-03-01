@@ -16,7 +16,7 @@ int addvalues(int a, int b)
 
 int main()
 {
-  int val = addvalues(1,5);
+  int val = addvalues(1,2);
   printf("addvalues = %d\n",val);
   return 0;
 }

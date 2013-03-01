@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
+#include "../wrap.h"
 
-static inline __attribute__((always_inline))
-uint32_t arm_cmp_sample_1() {
+/////begin ch_detail_cmp_1
+/*
+ * CMP命令 
+ */
+void arm_cmp_sample_1() {
   uint32_t d,cpsr1,cpsr2;
   __asm__ (
     "MRS  %[CPSR1],cpsr\n\t"
@@ -13,14 +17,15 @@ uint32_t arm_cmp_sample_1() {
     : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1),[CPSR2] "=r" (cpsr2) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
   printf("CPSR1 = 0x%08X\n",cpsr1);
   printf("CPSR2 = 0x%08X\n",cpsr2);
-  return d;
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_cmn_sample_1() {
+/////end
+/////begin ch_detail_cmn_1
+/*
+ * CMN命令 
+ */
+void arm_cmn_sample_1() {
   uint32_t d,cpsr1,cpsr2;
   __asm__ (
     "MRS  %[CPSR1],cpsr\n\t"
@@ -31,14 +36,15 @@ uint32_t arm_cmn_sample_1() {
     : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1),[CPSR2] "=r" (cpsr2) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
   printf("CPSR1 = 0x%08X\n",cpsr1);
   printf("CPSR2 = 0x%08X\n",cpsr2);
-  return d;
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_tst_sample_1() {
+/////end
+/////begin ch_detail_tst_1
+/*
+ * TST命令 
+ */
+void arm_tst_sample_1() {
   uint32_t d,cpsr1,cpsr2;
   __asm__ (
     "MRS  %[CPSR1],cpsr\n\t"
@@ -49,14 +55,15 @@ uint32_t arm_tst_sample_1() {
     : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1),[CPSR2] "=r" (cpsr2) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
   printf("CPSR1 = 0x%08X\n",cpsr1);
   printf("CPSR2 = 0x%08X\n",cpsr2);
-  return d;
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_teq_sample_1() {
+/////end
+/////begin ch_detail_teq_1
+/*
+ * TST命令 
+ */
+void arm_teq_sample_1() {
   uint32_t d,cpsr1,cpsr2;
   __asm__ (
     "MRS  %[CPSR1],cpsr\n\t"
@@ -67,20 +74,19 @@ uint32_t arm_teq_sample_1() {
     : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1),[CPSR2] "=r" (cpsr2) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
   printf("CPSR1 = 0x%08X\n",cpsr1);
   printf("CPSR2 = 0x%08X\n",cpsr2);
-  return d;
 }
+/////end
 
 
 int main() {
 
-  arm_cmp_sample_1();
-  arm_cmn_sample_1();
+  WRAP("ch_detail_cmp_1_a",arm_cmp_sample_1);
+  WRAP("ch_detail_cmn_1_a",arm_cmn_sample_1);
 
-  arm_tst_sample_1();
-  arm_teq_sample_1();
+  WRAP("ch_detail_tst_1_a",arm_tst_sample_1);
+  WRAP("ch_detail_teq_1_a",arm_teq_sample_1);
 
   return 0;
 }

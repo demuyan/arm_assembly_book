@@ -23,7 +23,7 @@ main:
 	mov	r1, #2
 	sub	sp, sp, #16
 	mov	r0, #1
-	bl	add_values2
+	bl	add_values
 	ldr	r1, .L2
 	mov	r2, r0
 	mov	r0, #1
@@ -66,7 +66,7 @@ main:
 	.section	.rodata.str1.4,"aMS",%progbits,1
 	.align	2
 .LC0:
-	.ascii	"addvalues2()=%d\012\000"
+	.ascii	"add_values()=%d\012\000"
 	.space	3
 .LC1:
 	.ascii	"add_values6()=%d\012\000"

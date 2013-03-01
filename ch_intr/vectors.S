@@ -1,9 +1,9 @@
+/////begin ch_intr_asm
               .text
               .code 32
 
               .global vectors_start
               .global vectors_end       
-/////begin ch_intr_asm_1
 /* ベクターテーブル */
 vectors_start:                                 //-----(2-1) ここから
               LDR   PC, reset_handler_addr
@@ -61,18 +61,17 @@ keep_loading:
 /* boot_main関数へ飛ぶ */
               BL    boot_main           //-----(7) 
               B     .
-/////end
+
 /*
  *  IRQ発生時
  */               
-/////begin ch_intr_asm_2
               .global irq_handler
 irq_handler:                             
               push  {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}   //-----(b)
               bl    c_irq_handler                                    //-----(c)
               pop   {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}   //-----(g)
               subs  pc,lr,#4                                         //-----(h)
-/////end              
+
 /*
  *  IRQを許可する
  */ 
@@ -84,3 +83,4 @@ enable_irq:
               bx    lr
               
               .end
+/////end

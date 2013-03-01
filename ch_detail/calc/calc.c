@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
+#include "../wrap.h"
 
-static inline __attribute__((always_inline))
-uint32_t arm_add_sample_1() {
+/////begin ch_detail_add_1
+/*
+ * ADD命令
+ */
+void arm_add_sample_1() {
   uint32_t d,cpsr;
   __asm__ (
     "MOV  r0,#1     \n\t" 
@@ -13,14 +17,15 @@ uint32_t arm_add_sample_1() {
     : [Rd] "=r" (d) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
+  printf("r2 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_add_sample_2() {
+/////end
+/////begin ch_detail_add_2
+/*
+ * ADD命令
+ */
+void arm_add_sample_2() {
   uint32_t d,cpsr;
   __asm__ (
     "MOV  r0,#1     \n\t" 
@@ -31,14 +36,15 @@ uint32_t arm_add_sample_2() {
     : [Rd] "=r" (d),[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
+  printf("r2 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_adc_sample_1() {
+/////end
+/////begin ch_detail_adc_1
+/*
+ * ADC命令
+ */
+void arm_adc_sample_1() {
   uint32_t d,cpsr;
   __asm__ (
     "MRS r1,cpsr\n\t"
@@ -52,14 +58,15 @@ uint32_t arm_adc_sample_1() {
     : [Rd] "=r" (d),[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
+  printf("r2 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_adc_sample_2() {
+/////end
+/////begin ch_detail_adc_2
+/*
+ * ADC命令
+ */
+void arm_adc_sample_2() {
   uint32_t d,cpsr;
   __asm__ (
     "MRS r1,cpsr\n\t"
@@ -73,14 +80,15 @@ uint32_t arm_adc_sample_2() {
     : [Rd] "=r" (d),[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
+  printf("r2 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_adc_sample_3() {
+/////end
+/////begin ch_detail_adc_3
+/*
+ * ADC命令
+ */
+void arm_adc_sample_3() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
     "MOV  r0,#0x80000002     \n\t" // (r5,r4) = (r1,r0) + (r3,r2)
@@ -95,15 +103,16 @@ uint32_t arm_adc_sample_3() {
     : [Rd1] "=r" (rd1),[Rd2] "=r" (rd2),[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3","r4","r5");
-  printf("func: %s\n",__func__);
-  printf("Rd1 = %08X\n",rd1);
-  printf("Rd2 = %08X\n",rd2);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return rd1;
+  printf("r4 = %08X\n",rd1);
+  printf("r5 = %08X\n",rd2);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_sub_sample_1() {
+/////end
+/////begin ch_detail_sub_1
+/*
+ * SUB命令
+ */
+void  arm_sub_sample_1() {
   uint32_t d,cpsr;
   __asm__ (
     "MOV  r0,#5     \n\t" 
@@ -114,14 +123,15 @@ uint32_t arm_sub_sample_1() {
     : [Rd] "=r" (d) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
+  printf("r2 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_sbc_sample_1() {
+/////end
+/////begin ch_detail_sbc_1
+/*
+ * SBC命令
+ */
+void  arm_sbc_sample_1() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
     "MOV  r0,#0x10     \n\t" // (r5,r4) =  (r1,r0) - (r3,r2)  
@@ -136,16 +146,16 @@ uint32_t arm_sbc_sample_1() {
     : [Rd1] "=r" (rd1),[Rd2] "=r" (rd2),[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3","r4","r5");
-  printf("\nfunc: %s\n",__func__);
-  printf("Rd1 = 0x%08X\n",rd1);
-  printf("Rd2 = 0x%08X\n",rd2);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return rd1;
+  printf("r4 = 0x%08X\n",rd1);
+  printf("r5 = 0x%08X\n",rd2);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-
-static inline __attribute__((always_inline))
-uint32_t arm_rsb_sample_1() {
+/////end
+/////begin ch_detail_rsb_1
+/*
+ * RSB命令
+ */
+void arm_rsb_sample_1() {
   uint32_t d,cpsr;
   __asm__ (
     "MOV  r0,#5     \n\t" 
@@ -155,14 +165,15 @@ uint32_t arm_rsb_sample_1() {
     : [Rd] "=r" (d) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
+  printf("r2 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_rsc_sample_1() {
+/////end
+/////begin ch_detail_rsc_1
+/*
+ * RSC命令
+ */
+void arm_rsc_sample_1() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
     "MOV  r0,#0x10     \n\t" // (r5,r4) =  (r1,r0) - (r3,r2)  
@@ -175,15 +186,17 @@ uint32_t arm_rsc_sample_1() {
     : [Rd1] "=r" (rd1),[Rd2] "=r" (rd2),[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3","r4","r5");
-  printf("\nfunc: %s\n",__func__);
-  printf("Rd1 = 0x%08X\n",rd1);
-  printf("Rd2 = 0x%08X\n",rd2);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return rd1;
-}
+  printf("r4 = 0x%08X\n",rd1);
+  printf("r5 = 0x%08X\n",rd2);
+  printf("cpsr = 0x%08X\n",cpsr);
 
-static inline __attribute__((always_inline))
-uint32_t arm_mul_sample_1() {
+}
+/////end
+/////begin ch_detail_mul_1
+/*
+ * MUL命令
+ */
+void arm_mul_sample_1() {
   uint32_t d,cpsr;
   __asm__ (
     "MOV  r0,#5     \n\t" 
@@ -194,14 +207,16 @@ uint32_t arm_mul_sample_1() {
     : [Rd] "=r" (d) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
-}
+  printf("r2 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 
-static inline __attribute__((always_inline))
-uint32_t arm_umull_sample_1() {
+}
+/////end
+/////begin ch_detail_umull_1
+/*
+ * UMULL命令
+ */
+void arm_umull_sample_1() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
     "MOV  r1,#20    \n\t" 
@@ -215,15 +230,17 @@ uint32_t arm_umull_sample_1() {
     : [Rd1] "=r" (rd1),[Rd2] "=r" (rd2) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd1 = %d\n",rd1);
-  printf("Rd2 = %d\n",rd2);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return rd1;
-}
+  printf("r3 = %d\n",rd1);
+  printf("r2 = %d\n",rd2);
+  printf("cpsr = 0x%08X\n",cpsr);
 
-static inline __attribute__((always_inline))
-uint32_t arm_sumll_sample_1() {
+}
+/////end
+/////begin ch_detail_sumll_1
+/*
+ * SUMLL命令
+ */
+void arm_sumll_sample_1() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
     "MOV  r1,#20    \n\t" 
@@ -237,15 +254,16 @@ uint32_t arm_sumll_sample_1() {
     : [Rd1] "=r" (rd1),[Rd2] "=r" (rd2) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd1 = %d\n",rd1);
-  printf("Rd2 = %d\n",rd2);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return rd1;
+  printf("r3 = %d\n",rd1);
+  printf("r2 = %d\n",rd2);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-static inline __attribute__((always_inline))
-uint32_t arm_mla_sample_1() {
+/////end
+/////begin ch_detail_mla_1
+/*
+ * MLA命令
+ */
+void arm_mla_sample_1() {
   uint32_t d,cpsr;
   __asm__ (
     "MOV  r0,#5     \n\t" 
@@ -257,14 +275,16 @@ uint32_t arm_mla_sample_1() {
     : [Rd] "=r" (d) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd = %d\n",d);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return d;
-}
+  printf("r3 = %d\n",d);
+  printf("cpsr = 0x%08X\n",cpsr);
 
-static inline __attribute__((always_inline))
-uint32_t arm_umlal_sample_1() {
+}
+/////end
+/////begin ch_detail_umlal_1
+/*
+ * UMLAL命令
+ */
+void arm_umlal_sample_1() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
     "MOV  r1,#20    \n\t" 
@@ -280,15 +300,17 @@ uint32_t arm_umlal_sample_1() {
     : [Rd1] "=r" (rd1),[Rd2] "=r" (rd2) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd1 = %d\n",rd1);
-  printf("Rd2 = %d\n",rd2);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return rd1;
-}
+  printf("r3 = %d\n",rd1);
+  printf("r2 = %d\n",rd2);
+  printf("cpsr = 0x%08X\n",cpsr);
 
-static inline __attribute__((always_inline))
-uint32_t arm_smlal_sample_1() {
+}
+/////end
+/////begin ch_detail_smlal_1
+/*
+ * SMLAL命令
+ */
+void arm_smlal_sample_1() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
     "MOV  r1,#20    \n\t" 
@@ -304,40 +326,34 @@ uint32_t arm_smlal_sample_1() {
     : [Rd1] "=r" (rd1),[Rd2] "=r" (rd2) ,[CPSR] "=r" (cpsr) 
     : 
     : "r0","r1","r2","r3");
-  printf("func: %s\n",__func__);
-  printf("Rd1 = %d\n",rd1);
-  printf("Rd2 = %d\n",rd2);
-  printf("CPSR = 0x%08X\n",cpsr);
-  return rd1;
+  printf("r3 = %d\n",rd1);
+  printf("r2 = %d\n",rd2);
+  printf("cpsr = 0x%08X\n",cpsr);
 }
-
-
-
-
-
+/////end
 
 int main() {
   uint32_t val;
 
-  val = 0x00000005;
-  arm_add_sample_1();
-  arm_add_sample_2();
-  arm_adc_sample_1();
-  arm_adc_sample_2();
-  arm_adc_sample_3();
+  WRAP("ch_detail_add_1_a",arm_add_sample_1);
+  WRAP("ch_detail_add_2_a",arm_add_sample_2);
 
-  arm_sub_sample_1();
-  arm_sbc_sample_1();
-  arm_rsb_sample_1();
-  arm_rsc_sample_1();
+  WRAP("ch_detail_adc_1_a",arm_adc_sample_1);
+  WRAP("ch_detail_adc_2_a",arm_adc_sample_2);
+  WRAP("ch_detail_adc_3_a",arm_adc_sample_3);
 
-  arm_mul_sample_1();
-  arm_umull_sample_1();
-  arm_sumll_sample_1();
+  WRAP("ch_detail_sub_1_a",arm_sub_sample_1);
+  WRAP("ch_detail_sbc_1_a",arm_sbc_sample_1);
+  WRAP("ch_detail_rsb_1_a",arm_rsb_sample_1);
+  WRAP("ch_detail_rsc_1_a",arm_rsc_sample_1);
 
-  arm_mla_sample_1();
-  arm_umlal_sample_1();
-  arm_smlal_sample_1();
+  WRAP("ch_detail_mul_1_a",arm_mul_sample_1);
+  WRAP("ch_detail_umull_1_a",arm_umull_sample_1);
+  WRAP("ch_detail_sumll_1_a",arm_sumll_sample_1);
+
+  WRAP("ch_detail_mla_1_a",arm_mla_sample_1);
+  WRAP("ch_detail_umlal_1_a",arm_umlal_sample_1);
+  WRAP("ch_detail_smlal_1_a",arm_smlal_sample_1);
 
   return 0;
 }

@@ -1,3 +1,4 @@
+/////begin ch_intr_c
 #include <stdint.h>
 
 /* シリアル関連 */
@@ -26,7 +27,6 @@
 #define PIC_TIMER01   0x10
 #define VIC_INTENABLE 0x4 /* 0x10 bytes */
 
-/////begin ch_intr_boot_main2
 /*
  * シリアルへ出力する
  */
@@ -43,31 +43,29 @@ void uart_puts(char *s) {
 void c_irq_handler() {            
   if(*(TIMER0 + TIMER_MIS)) {     /////-----(d)                             
     /* 文字列をシリアルに出力する */
-    uart_puts("timer0\n");        /////-----(e)                        
+    uart_puts("timer0 interrupt!\n");        /////-----(e)                        
     /* 割り込みをクリアーする */ 
     *(TIMER0 + TIMER_INTCLR) = 1; /////-----(f)                        
   }
 }
-/////end
-/////begin ch_intr_boot_main
 /*
  * 処理関数
  */
 void boot_main(void) {
 
   /* PIC(Primary Interrupt Controller)にてTimer0, Timer1割り込みを許可する */
-  *(PIC + VIC_INTENABLE) = PIC_TIMER01; /////-----(1)
+  *(PIC + VIC_INTENABLE) = PIC_TIMER01; /////-----(8)
 
   /* Timer0割り込み発生周期設定 */
-  *TIMER0 = 1000000;                   /////-----(2)
+  *TIMER0 = 1000000;                   /////-----(9)
 
   /* Timer0割り込み設定 */
-  *(TIMER0 + TIMER_CONTROL) =          /////-----(3)
+  *(TIMER0 + TIMER_CONTROL) =          /////-----(10)
     TIMER_EN | TIMER_PERIODIC | TIMER_32BIT | TIMER_INTEN;
 
   /* IRQ許可 */
-  enable_irq();                        /////-----(4)
+  enable_irq();                        /////-----(11)
 
-  for(;;);                             /////-----(5)
+  for(;;);                             /////-----(12)
 }
 /////end

@@ -13,16 +13,16 @@
 	.file	"add_values.c"
 	.text
 	.align	2
-	.global	add_values2
-	.type	add_values2, %function
-add_values2:
+	.global	add_values
+	.type	add_values, %function
+add_values:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
 	add	r0, r1, r0
 	bx	lr
-	.size	add_values2, .-add_values2
+	.size	add_values, .-add_values
 	.align	2
 	.global	add_values6
 	.type	add_values6, %function
