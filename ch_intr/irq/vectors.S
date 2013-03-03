@@ -35,16 +35,16 @@ reset_handler:
 /* スーパーバイザモード時のスタック領域の先頭アドレスをセットする */
               LDR   sp, =stack_top      //-----(1)
 /* ベクターテーブルをセットする */
-              mov   r0, #0x00           //-----(2) ここから
-              ldr   r1, =vectors_start  
-              ldr   r3, =vectors_end
+              MOV   r0, #0x00           //-----(2) ここから
+              LDR   r1, =vectors_start  
+              LDR   r3, =vectors_end
 keep_loading: 
-              ldr   r2, [r1, #0x0]
-              str   r2, [r0, #0x0]
-              add   r0, r0, #0x4
-              add   r1, r1, #0x4
-              cmp   r1, r3
-              bne   keep_loading        //-----(2) ここまで
+              LDR   r2, [r1, #0x0]
+              STR   r2, [r0, #0x0]
+              ADD   r0, r0, #0x4
+              ADD   r1, r1, #0x4
+              CMP   r1, r3
+              BNE   keep_loading        //-----(2) ここまで
 
 /* ステータスレジスタを取得 */
               MRS   r0, cpsr            //-----(3)
@@ -67,20 +67,20 @@ keep_loading:
  */               
               .global irq_handler
 irq_handler:                             
-              push  {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}   //-----(b)
-              bl    c_irq_handler                                    //-----(c)
-              pop   {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}   //-----(g)
-              subs  pc,lr,#4                                         //-----(h)
+              PUSH  {r0-r12,lr}   //-----(b)
+              BL    c_irq_handler                                    //-----(c)
+              POP   {r0-r12,lr}   //-----(g)
+              SUBS   pc,lr,#4                                         //-----(h)
 
 /*
  *  IRQを許可する
  */ 
               .global enable_irq
 enable_irq:   
-              mrs   r0,cpsr
-              bic   r0,r0,#0x80
-              msr   cpsr_c,r0
-              bx    lr
+              MRS   r0,cpsr
+              BIC   r0,r0,#0x80
+              MSR   cpsr_c,r0
+              BX    lr
               
               .end
 /////end

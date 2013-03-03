@@ -192,19 +192,19 @@ void arm_rotate_shift_1() {
 void arm_rotate_shift_2() {
   int32_t rd1,rd2,rd3,rd4,rd5,rd6,rd7,rd8,rd9,rd10;
   __asm__ (
-    "      ADDS r0,r0,#0 \n\t"
-    "      LDR r0,=-1    \n\t" 
-    "      MOV r1,#32    \n\t" 
-    "      MOV r2,#0     \n\t" 
-    "LOOP: RRXS r0,r0    \n\t" 
-    "      BLCC SKIP     \n\t" 
-    "      ADD r2,r2,#1  \n\t" 
-    "SKIP: SUBS r1,r1,#1 \n\t" 
-    "      BNE LOOP      \n\t" 
-    "      MOV %[Rd1],r2 \n\t" 
+    "      MSR  cpsr_f,#0 \n\t"  // フラグをクリア
+    ""
+    "      LDR r0,=7      \n\t"  // r0: ビット数をカウントする元の値
+    "      MOV r1,#32     \n\t"  // r1: ループカウンタ(カウントするビット数)
+    "      MOV r2,#0      \n\t"  // r2: カウンタ    
+    "LOOP: RRXS r0,r0     \n\t"  // 右へ１ビットシフト。最下位ビットの値はキャリーフラグに格納
+    "      ADDCS r2,r2,#1 \n\t"  // キャリーフラグが立っていれば、カウンタを+1する 
+    "      SUBS r1,r1,#1  \n\t"  // ループカウンタを-1する
+    "      BNE LOOP       \n\t"  // ループカウンタ>0ならばループする
+    "      MOV %[Rd1],r2  \n\t"  // 結果を格納する
     : [Rd1] "=r" (rd1)
     : 
-    : "r0","r1","r2","r3");
+    : "r0","r1","r2");
 
   printf("r2=0x%08X\n",rd1);  
 }
