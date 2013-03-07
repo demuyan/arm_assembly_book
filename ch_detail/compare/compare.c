@@ -49,7 +49,7 @@ void arm_cmn_sample_1() {
     "MOV  r1,#-1        \n\t" // r1 ← -1
     "CMN  r0,r1         \n\t" // cpsr ← r0+r1
     "MRS  %[CPSR1],cpsr \n\t" // 変数cpsr1 ← cpsr
-    : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1)
+    : [CPSR1] "=r" (cpsr1)
     : 
     : "r0","r1");
   printf("flag1 = %s\n", byte_to_binary(cpsr1 >> 24));
@@ -68,7 +68,7 @@ void arm_tst_sample_1() {
     "MOV  r1,#1         \n\t" // r1 ← 1
     "TST  r0,r1         \n\t" // cpsr ← (r0 AND r1)
     "MRS  %[CPSR1],cpsr \n\t" // 変数cpsr1 ← cpsr
-    : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1)
+    : [CPSR1] "=r" (cpsr1)
     : 
     : "r0","r1");
   printf("flag1 = %s\n", byte_to_binary(cpsr1 >> 24));
