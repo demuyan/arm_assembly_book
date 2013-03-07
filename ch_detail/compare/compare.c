@@ -22,15 +22,15 @@ const char *byte_to_binary(int x)
  * CMP命令 
  */
 void arm_cmp_sample_1() {
-  uint32_t d,cpsr1;
+  uint32_t cpsr1;
   __asm__ (
-    "MSR  cpsr_f,#0 \n\t"  // フラグをクリア
+    "MSR cpsr_f,#0     \n\t" // フラグをクリア
     ""    
-    "MOV  r0,#1     \n\t" 
-    "MOV  r1,#2     \n\t" 
-    "CMP  r0,r1     \n\t" 
-    "MRS  %[CPSR1],cpsr\n\t"
-    : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1)
+    "MOV r0,#1         \n\t" // r0 ← 1
+    "MOV r1,#2         \n\t" // r1 ← 2
+    "CMP r0,r1         \n\t" // cpsr ← r0 - r1
+    "MRS %[CPSR1],cpsr \n\t" // 変数cpsr1 ← cpsr
+    : [CPSR1] "=r" (cpsr1)
     : 
     : "r0","r1");
   printf("flag1 = %s\n", byte_to_binary(cpsr1 >> 24));
@@ -41,14 +41,14 @@ void arm_cmp_sample_1() {
  * CMN命令 
  */
 void arm_cmn_sample_1() {
-  uint32_t d,cpsr1,cpsr2;
+  uint32_t cpsr1;
   __asm__ (
-    "MSR  cpsr_f,#0     \n\t"  // フラグをクリア
-    ""    
-    "MOV  r0,#1         \n\t" 
-    "MOV  r1,#-1        \n\t" 
-    "CMN  r0,r1         \n\t" 
-    "MRS  %[CPSR1],cpsr \n\t"
+    "MSR  cpsr_f,#0     \n\t" // フラグをクリア
+
+    "MOV  r0,#1         \n\t" // r0 ← 5
+    "MOV  r1,#-1        \n\t" // r1 ← -1
+    "CMN  r0,r1         \n\t" // cpsr ← r0+r1
+    "MRS  %[CPSR1],cpsr \n\t" // 変数cpsr1 ← cpsr
     : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1)
     : 
     : "r0","r1");
@@ -60,14 +60,14 @@ void arm_cmn_sample_1() {
  * TST命令 
  */
 void arm_tst_sample_1() {
-  uint32_t d,cpsr1,cpsr2;
+  uint32_t cpsr1;
   __asm__ (
-    "MSR  cpsr_f,#0     \n\t"  // フラグをクリア
+    "MSR  cpsr_f,#0     \n\t" // フラグをクリア
     ""    
-    "MOV  r0,#1         \n\t" 
-    "MOV  r1,#1         \n\t" 
-    "TST  r0,r1         \n\t" 
-    "MRS  %[CPSR1],cpsr \n\t"
+    "MOV  r0,#1         \n\t" // r0 ← 1
+    "MOV  r1,#1         \n\t" // r1 ← 1
+    "TST  r0,r1         \n\t" // cpsr ← (r0 AND r1)
+    "MRS  %[CPSR1],cpsr \n\t" // 変数cpsr1 ← cpsr
     : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1)
     : 
     : "r0","r1");
@@ -79,15 +79,14 @@ void arm_tst_sample_1() {
  * TEQ命令 
  */
 void arm_teq_sample_1() {
-  uint32_t d,cpsr1,cpsr2;
+  uint32_t cpsr1;
   __asm__ (
-    "MSR  cpsr_f,#0     \n\t"  // フラグをクリア
-    ""    
-    "MOV  r0,#1         \n\t" 
-    "MOV  r1,#1         \n\t" 
-    "TEQ  r0,r1         \n\t" 
-    "MRS  %[CPSR1],cpsr \n\t"
-    : [Rd] "=r" (d) ,[CPSR1] "=r" (cpsr1)
+    "MSR  cpsr_f,#0     \n\t" // フラグをクリア
+    "MOV  r0,#1         \n\t" // r0 ← 1
+    "MOV  r1,#1         \n\t" // r1 ← 1
+    "TEQ  r0,r1         \n\t" // cpsr ← r0 EOR r1
+    "MRS  %[CPSR1],cpsr \n\t" // 変数cpsr1 ← cpsr
+    : [CPSR1] "=r" (cpsr1)
     : 
     : "r0","r1","r2","r3");
   printf("flag1 = %s\n", byte_to_binary(cpsr1 >> 24));

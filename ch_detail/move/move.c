@@ -6,8 +6,8 @@
 void arm_move_1() {
   uint32_t d;
   __asm__ (
-    "MOV  r0,#1     \n\t" 
-    "MOV  %[Rd],r0  \n\t" 
+    "MOV r0,#1    \n\t" // r0レジスタ ← 1
+    "MOV %[Rd],r0 \n\t" // 変数rd ← r0
     : [Rd] "=r" (d) 
     : 
     : "r0");
@@ -19,8 +19,8 @@ void arm_move_1() {
 void arm_move_2() {
   uint32_t d;
   __asm__ (
-    "MVN  r0,#1     \n\t" 
-    "MOV  %[Rd],r0  \n\t" 
+    "MVN r0,#1    \n\t" // r0レジスタ ← １をビット反転
+    "MOV %[Rd],r0 \n\t" // 変数rd ← r0
     : [Rd] "=r" (d) 
     : 
     : "r0");

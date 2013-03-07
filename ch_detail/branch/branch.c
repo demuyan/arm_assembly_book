@@ -9,10 +9,10 @@
 void arm_b_sample_1() {
   uint32_t d;
   __asm__ (
-    "        MOV  r0,#2    \n\t" 
-    "        B    finish1  \n\t"
-    "        MOV  r0,#10   \n\t"
-    "finish1: MOV %[Rd],r2 \n\t"
+    "         MOV  r0,#2   \n\t" // r0 ← 2         
+    "         B    finish1 \n\t" // finish1に分岐          
+    "         MOV  r0,#10  \n\t" // (この命令は実行されない) 
+    "finish1: MOV %[Rd],r2 \n\t" // 変数rd ← r2
     : [Rd] "=r" (d) 
     : 
     : "r0","r1","r2","r3");
@@ -26,19 +26,19 @@ void arm_b_sample_1() {
 void arm_b_sample_2() {
   uint32_t d;
   __asm__ (
-    "        MOV  r0,#2   \n\t" 
-    "        MOV  r1,#1   \n\t" 
-    "        CMP  r0,r1   \n\t" 
-    "        BEQ  next    \n\t" 
-    "        MOV  r2,#0   \n\t"
-    "        B    finish  \n\t"
+    "        MOV  r0,#2   \n\t" // r0 ← 2         
+    "        MOV  r1,#1   \n\t" // r1 ← 1          
+    "        CMP  r0,r1   \n\t" // r0とr1を比較
+    "        BEQ  next    \n\t" // r0==r1ならばラベルnextへ無条件分岐
+    "        MOV  r2,#0   \n\t" // r2 ← 0          
+    "        B    finish  \n\t" // ラベルfinishへ無条件分岐
     "next:                \n\t"
-    "        MOV r2,#1    \n\t"
-    "finish: MOV %[Rd],r2 \n\t"
+    "        MOV r2,#1    \n\t" // r2 ← 1          
+    "finish: MOV %[Rd],r2 \n\t" // 変数rd ← r2
 
     : [Rd] "=r" (d)
     : 
-    : "r0","r1","r2","r3");
+    : "r0","r1","r2");
   printf("r2 = 0x%08X\n",d);
 }
 /////end
@@ -49,13 +49,13 @@ void arm_b_sample_2() {
 void arm_bl_sample_1() {
   uint32_t d;
   __asm__ (
-    "        MOV  r0,#2    \n\t" 
-    "        BL   subr1    \n\t"
-    "        B    finish2  \n\t"
+    "         MOV  r0,#2   \n\t" // r0 ← 2
+    "         BL   subr1   \n\t" // subr1をサブルーチン呼び出し
+    "         B    finish2 \n\t" // finish2へ無条件ジャンプ
     "subr1:                \n\t"
-    "        MOV  r0,#10   \n\t"
-    "        BX   lr       \n\t"
-    "finish2: MOV %[Rd],r0 \n\t"
+    "         MOV  r0,#10  \n\t" // r0 ← 10
+    "         BX   lr      \n\t" // サブルーチンから戻る
+    "finish2: MOV %[Rd],r0 \n\t" // 変数rd ← r0
     : [Rd] "=r" (d)
     : 
     : "r0", "r14");

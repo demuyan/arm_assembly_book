@@ -1,3 +1,4 @@
+/* /////begin ch_intr_swi_ld */
 ENTRY(vectors_start)
 SECTIONS
 {
@@ -17,3 +18,4 @@ SECTIONS
   user_stack_top = .;
  }
 }
+/* /////end */
