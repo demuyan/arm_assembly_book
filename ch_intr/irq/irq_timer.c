@@ -1,4 +1,3 @@
-/////begin ch_intr_c
 #include <stdint.h>
 
 /* シリアル関連 */
@@ -27,6 +26,7 @@
 #define PIC_TIMER01   0x10
 #define VIC_INTENABLE 0x4 /* 0x10 bytes */
 
+/////begin ch_intr_c_2
 /*
  * シリアルへ出力する
  */
@@ -37,6 +37,7 @@ void uart_puts(char *s) {
     s++;
   }
 }
+
 /*
  * 割り込み(IRQ)発生時
  */
@@ -48,6 +49,8 @@ void c_irq_handler() {
     *(TIMER0 + TIMER_INTCLR) = 1; /////-----(f)                        
   }
 }
+/////end
+/////begin ch_intr_c_1
 /*
  * 処理関数
  */

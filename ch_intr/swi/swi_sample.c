@@ -31,23 +31,23 @@ void output_mode()
 /*
  * ソフトウェア割り込み(SWI)発生時
  */
-void c_swi_handler(unsigned char swi_no, uint32_t swi_no2) {            
+void c_swi_handler(unsigned char swi_no, uint32_t swi_no2) {  //-----(4)          
   uart_puts("swi");
   output_mode();
 }
 /*
  * 処理関数
  */
-void boot_main(void) {
+void boot_main(void) { 
   uint32_t i =0;
-  for(;;){
+  for(;;){                    //-----(1)ここから
     i++;
     if (i > 0xf000000){
       uart_puts("boot_main");
-      output_mode();
-      call_swi();
+      output_mode();          //-----(2)
+      call_swi();             //-----(3)
       i=0;
     }
-  }
+  }                           //-----(1)ここまで
 }
 /////end

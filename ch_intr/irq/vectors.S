@@ -1,31 +1,36 @@
-/////begin ch_intr_asm
               .text
               .code 32
 
               .global vectors_start
               .global vectors_end       
-/* ベクターテーブル */
-vectors_start:                                 //-----(2-1) ここから
-              LDR   PC, reset_handler_addr
+/////begin ch_intr_asm_1
+/*
+ *  ベクターテーブル
+ */ 
+vectors_start:                                   
+              LDR   PC, reset_handler_addr       //-----(1)
               LDR   PC, undef_handler_addr
               LDR   PC, swi_handler_addr
               LDR   PC, prefetch_abort_handler_addr
               LDR   PC, data_abort_handler_addr
               B     .
-              LDR   PC, irq_handler_addr       //-----(a-1)
+              LDR   PC, irq_handler_addr         
               LDR   PC, fiq_handler_addr
 
-reset_handler_addr: .word reset_handler
-undef_handler_addr: .word halt
-swi_handler_addr: .word halt
+reset_handler_addr:          .word reset_handler
+undef_handler_addr:          .word halt
+swi_handler_addr:            .word halt
 prefetch_abort_handler_addr: .word halt
-data_abort_handler_addr: .word halt
-irq_handler_addr: .word irq_handler            //-----(a-2)
-fiq_handler_addr: .word halt                   //-----(2-1) ここまで
-vectors_end:  
+data_abort_handler_addr:     .word halt
+irq_handler_addr:            .word irq_handler   
+fiq_handler_addr:            .word halt          
 
+vectors_end:
+
+/* プログラム停止（無限ループ) */
 halt:         b     .
-
+/////end
+/////begin ch_intr_asm_2
 /*
  * リセット処理
  * 最初はスーパーバイザモードで起動する
@@ -37,7 +42,7 @@ reset_handler:
 /* ベクターテーブルをセットする */
               MOV   r0, #0x00           //-----(2) ここから
               LDR   r1, =vectors_start  
-              LDR   r3, =vectors_end
+              LDR   r3, =vectors_end    
 keep_loading: 
               LDR   r2, [r1, #0x0]
               STR   r2, [r0, #0x0]
@@ -61,16 +66,17 @@ keep_loading:
 /* boot_main関数へ飛ぶ */
               BL    boot_main           //-----(7) 
               B     .
+/////end
 
 /*
  *  IRQ発生時
  */               
               .global irq_handler
 irq_handler:                             
-              PUSH  {r0-r12,lr}   //-----(b)
-              BL    c_irq_handler                                    //-----(c)
-              POP   {r0-r12,lr}   //-----(g)
-              SUBS   pc,lr,#4                                         //-----(h)
+              PUSH  {r0-r12,lr}         //-----(b)
+              BL    c_irq_handler       //-----(c)
+              POP   {r0-r12,lr}         //-----(g)
+              SUBS   pc,lr,#4           //-----(h)
 
 /*
  *  IRQを許可する
@@ -83,4 +89,3 @@ enable_irq:
               BX    lr
               
               .end
-/////end
