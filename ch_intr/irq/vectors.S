@@ -67,7 +67,6 @@ keep_loading:
               BL    boot_main           //-----(7) 
               B     .
 /////end
-
 /*
  *  IRQ発生時
  */               

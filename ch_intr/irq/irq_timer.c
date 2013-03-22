@@ -42,11 +42,11 @@ void uart_puts(char *s) {
  * 割り込み(IRQ)発生時
  */
 void c_irq_handler() {            
-  if(*(TIMER0 + TIMER_MIS)) {     /////-----(d)                             
+  if(*(TIMER0 + TIMER_MIS)) {             /////-----(f)                             
     /* 文字列をシリアルに出力する */
-    uart_puts("timer0 interrupt!\n");        /////-----(e)                        
+    uart_puts("timer0 interrupt!\n");     /////-----(g)                        
     /* 割り込みをクリアーする */ 
-    *(TIMER0 + TIMER_INTCLR) = 1; /////-----(f)                        
+    *(TIMER0 + TIMER_INTCLR) = 1;         /////-----(h)                        
   }
 }
 /////end

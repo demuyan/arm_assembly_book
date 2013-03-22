@@ -1,11 +1,13 @@
-/////begin ch_intr_swi_asm
               .text
               .code 32
 
               .global vectors_start
               .global vectors_end       
-/* ベクターテーブル */
-vectors_start:                                 //-----(2-1) ここから
+/////begin ch_intr_swi_asm
+/*
+ *  ベクターテーブル
+ */ 
+vectors_start:                                 
               LDR   PC, reset_handler_addr
               LDR   PC, undef_handler_addr
               LDR   PC, swi_handler_addr
@@ -21,17 +23,18 @@ swi_handler_addr: .word swi_handler           //-----(a-2)
 prefetch_abort_handler_addr: .word halt
 data_abort_handler_addr: .word halt
 irq_handler_addr: .word halt                   
-fiq_handler_addr: .word halt                   //-----(2-1) ここまで
+fiq_handler_addr: .word halt                   
 vectors_end:  
 
+/* プログラム停止（無限ループ) */
 halt:         b     .
-
+/////end
+/////begin ch_intr_swi_asm_2
 /*
  * リセット処理
  * 最初はスーパーバイザモードで起動する
  */
 reset_handler: 
-
 /* スーパーバイザモード時のスタック領域の先頭アドレスをセットする */
               LDR   sp, =stack_top      //-----(1)
 /* ベクターテーブルをセットする */
@@ -55,11 +58,10 @@ keep_loading:
 /* boot_main関数へ飛ぶ */
               BL    boot_main           //-----(6) 
               B     .
-
+/////end
 /*
  *  SWI発生時
  */               
-
               .global swi_handler
 swi_handler:                             
               STMFD  sp!, {r0-r12,lr}
@@ -67,7 +69,6 @@ swi_handler:
               BIC   r1, r1, #0xff000000
               BL    c_swi_handler                                   
               LDMFD sp!, {r0-r12,pc}  
-
 /*
  *  プロセッサモードを取得する
  */ 
@@ -88,5 +89,3 @@ call_swi:
               BX    lr
 
               .end
-
-/////end 
