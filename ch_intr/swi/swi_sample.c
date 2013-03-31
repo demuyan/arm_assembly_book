@@ -24,7 +24,7 @@ void output_mode()
   uint32_t val = get_processor_mode();
   buf[0] += val / 0x10;
   buf[1] += val % 0x10;
-  uart_puts(" mode=");
+  uart_puts("mode=0x");
   uart_puts(buf);
 }
 /*

@@ -52,11 +52,11 @@ keep_loading:
 /* ユーザモードに切り替え */
               BIC   r1, r0, #0x1F       //-----(3) ここから
               ORR   r1, r1, #0x10
-              MSR   cpsr, r1            //-----(4) ここまで
-              LDR   sp, =user_stack_top  //-----(5) 
+              MSR   cpsr, r1            //-----(3) ここまで
+              LDR   sp, =user_stack_top //-----(4) 
               
 /* boot_main関数へ飛ぶ */
-              BL    boot_main           //-----(6) 
+              BL    boot_main           //-----(5) 
               B     .
 /////end
 /*

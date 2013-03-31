@@ -48,8 +48,8 @@ void arm_shift_3(void) {
     "LDR r0,=5     \n\t" // r0 ← 5 
     "LSL r1,r0,#1  \n\t" // r1 ← r0 * 2 
     "LSL r2,r0,#2  \n\t" // r2 ← r0 * 4
-    "ADD r3,r1,r2  \n\t" // r3 ← r0 * 5
-    "ADD r3,r3,r0  \n\t" // r3 ← r0 * 7 = (r0 * 5) + (r0 * 2)
+    "ADD r3,r1,r2  \n\t" // r3 ← r0 * 6 = (r0 * 2) + (r0 * 4) 
+    "ADD r3,r3,r0  \n\t" // r3 ← r0 * 7 = (r0 * 6) + r0
     "MOV %[Rd0],r3 \n\t" // 変数rd0 ← r3
     : [Rd0] "=r" (rd0) 
     : 

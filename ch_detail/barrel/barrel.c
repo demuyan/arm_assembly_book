@@ -2,10 +2,10 @@
 #include <stdint.h>
 #include "../wrap.h"
 
-/////begin ch_detail_barrel_1
 /*
  * バレルシフタ未使用
  */
+/////begin ch_detail_barrel_1
 void arm_barrel_sample_1() {
   uint32_t rd1;
   __asm__ (
@@ -21,10 +21,10 @@ void arm_barrel_sample_1() {
 }
 /////end
 
-/////begin ch_detail_barrel_2
 /*
  * バレルシフタ使用
  */
+/////begin ch_detail_barrel_2
 void arm_barrel_sample_2() {
   uint32_t rd1;
   __asm__ (
