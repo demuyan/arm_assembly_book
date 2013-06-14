@@ -23,7 +23,6 @@ const char *display_flags(int x)
 /*
  * ADD命令
  */
-/////begin ch_detail_add_1
 void arm_add_sample_1() {
   uint32_t rd1,rd2,cpsr1,cpsr2;
   __asm__ (
@@ -47,11 +46,10 @@ void arm_add_sample_1() {
   printf("flag1 : %s\n", display_flags(cpsr1 >> 24));
   printf("flag2 : %s\n", display_flags(cpsr2 >> 24)); 
 }
-/////end
+
 /*
  * ADD命令
  */
-/////begin ch_detail_add_2
 void arm_add_sample_2() {
   uint32_t rd1,rd2,cpsr1,cpsr2;
   __asm__ (
@@ -75,11 +73,10 @@ void arm_add_sample_2() {
   printf("flag1 : %s\n", display_flags(cpsr1 >> 24));
   printf("flag2 : %s\n", display_flags(cpsr2 >> 24)); 
 }
-/////end
+
 /*
  * ADC命令
  */
-/////begin ch_detail_adc_1
 void arm_adc_sample_1() {
   uint32_t d,cpsr;
   __asm__ (
@@ -98,12 +95,11 @@ void arm_adc_sample_1() {
   printf("r2 = %d\n",d);
   printf("flag : %s\n", display_flags(cpsr >> 24));
 }
-/////end
+
 /*
  * ADC命令
  * (r5,r4) = (r1,r0) + (r3,r2)
  */
-/////begin ch_detail_adc_2
 void arm_adc_sample_2() {
   uint32_t rd1,rd2,cpsr;
 
@@ -129,11 +125,10 @@ void arm_adc_sample_2() {
   printf("r5 = 0x%08X\n",rd2); // 演算結果　上位32ビット
   printf("flag : %s\n", display_flags(cpsr >> 24));
 }
-/////end
+
 /*
  * SUB命令
  */
-/////begin ch_detail_sub_1
 void  arm_sub_sample_1() {
   uint32_t d;
   __asm__ (
@@ -146,11 +141,10 @@ void  arm_sub_sample_1() {
     : "r0","r1","r2");
   printf("r2 = %d\n",d);
 }
-/////end
+
 /*
  * SBC命令
  */
-/////begin ch_detail_sbc_1
 void  arm_sbc_sample_1() {
   uint32_t rd1,rd2,cpsr;
 
@@ -176,11 +170,10 @@ void  arm_sbc_sample_1() {
   printf("r5 = 0x%08X\n",rd2); // 演算結果　上位32ビット
   printf("flag : %s\n", display_flags(cpsr >> 24));
 }
-/////end
+
 /*
  * RSB命令
  */
-/////begin ch_detail_rsb_1
 void arm_rsb_sample_1() {
   uint32_t d;
   __asm__ (
@@ -192,11 +185,10 @@ void arm_rsb_sample_1() {
     : "r0","r1","r2","r3");
   printf("r2 = %d\n",d);
 }
-/////end
+
 /*
  * RSC命令
  */
-/////begin ch_detail_rsc_1
 void arm_rsc_sample_1() {
   uint32_t rd1,rd2,cpsr;
 
@@ -218,11 +210,10 @@ void arm_rsc_sample_1() {
   printf("r5 = 0x%08X\n",rd2); // 演算結果　上位32ビット
   printf("flag : %s\n", display_flags(cpsr >> 24));
 }
-/////end
+
 /*
  * MUL命令
  */
-/////begin ch_detail_mul_1
 void arm_mul_sample_1() {
   uint32_t d;
   __asm__ (
@@ -235,11 +226,10 @@ void arm_mul_sample_1() {
     : "r0","r1","r2");
   printf("r2 = %d\n",d);
 }
-/////end
+
 /*
  * UMULL命令
  */
-/////begin ch_detail_umull_1
 void arm_umull_sample_1() {
   uint32_t rd1,rd2;
   __asm__ (
@@ -254,11 +244,10 @@ void arm_umull_sample_1() {
   printf("r3 = 0x%08X\n",rd1); // 演算結果　上位32ビット
   printf("r2 = 0x%08X\n",rd2); // 演算結果　下位32ビット
 }
-/////end
+
 /*
  * SMULL命令
  */
-/////begin ch_detail_smull_1
 void arm_smull_sample_1() {
   uint32_t rd1,rd2;
   __asm__ (
@@ -273,11 +262,10 @@ void arm_smull_sample_1() {
   printf("r3 = 0x%08X\n",rd1); // 演算結果　上位32ビット
   printf("r2 = 0x%08X\n",rd2); // 演算結果　下位32ビット
 }
-/////end
+
 /*
  * MLA命令
  */
-/////begin ch_detail_mla_1
 void arm_mla_sample_1() {
   uint32_t d;
   __asm__ (
@@ -291,11 +279,10 @@ void arm_mla_sample_1() {
     : "r0","r1","r2","r3");
   printf("r3 = %d\n",d);
 }
-/////end
+
 /*
  * UMLAL命令
  */
-/////begin ch_detail_umlal_1
 void arm_umlal_sample_1() {
   uint32_t rd1,rd2;
   __asm__ (
@@ -312,11 +299,10 @@ void arm_umlal_sample_1() {
   printf("r3 = 0x%08X\n",rd1); // 演算結果　上位32ビット
   printf("r2 = 0x%08X\n",rd2); // 演算結果　下位32ビット
 }
-/////end
+
 /*
  * SMLAL命令
  */
-/////begin ch_detail_smlal_1
 void arm_smlal_sample_1() {
   uint32_t rd1,rd2,cpsr;
   __asm__ (
@@ -333,7 +319,6 @@ void arm_smlal_sample_1() {
   printf("r3 = 0x%08X\n",rd1); // 演算結果　上位32ビット
   printf("r2 = 0x%08X\n",rd2); // 演算結果　下位32ビット
 }
-/////end
 
 int main() {
 

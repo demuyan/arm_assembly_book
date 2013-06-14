@@ -5,7 +5,6 @@
 /*
  * MRS命令
  */
-/////begin ch_detail_mrs_1
 void arm_mrs_sample_1() {
   uint32_t cpsr1;
   __asm__ (
@@ -16,11 +15,10 @@ void arm_mrs_sample_1() {
     : "r0");
   printf("cpsr = 0x%08X\n",cpsr1);
 }
-/////end
+
 /*
  * MSR命令
  */
-/////begin ch_detail_msr_1
 void arm_msr_sample_1() {
   uint32_t cpsr1;
   __asm__ (
@@ -31,11 +29,10 @@ void arm_msr_sample_1() {
     : "r0");
   printf("cpsr = 0x%08X\n",cpsr1);
 }
-/////end
+
 /*
  * MSR命令
  */
-/////begin ch_detail_msr_2
 void arm_msr_sample_2() {
   uint32_t cpsr1,cpsr2;
   __asm__ (
@@ -54,8 +51,6 @@ void arm_msr_sample_2() {
   printf("cpsr1 = 0x%08X\n",cpsr1);
   printf("cpsr2 = 0x%08X\n",cpsr2);
 }
-/////end
-
 
 int main() {
 

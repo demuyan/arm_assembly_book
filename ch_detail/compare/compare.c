@@ -23,7 +23,7 @@ const char *display_flags(int x)
 /*
  * CMP命令 
  */
-/////begin ch_detail_cmp_1
+
 void arm_cmp_sample_1() {
   uint32_t cpsr1,cpsr2;
   __asm__ (
@@ -42,11 +42,10 @@ void arm_cmp_sample_1() {
   printf("flag1 : %s\n", display_flags(cpsr1 >> 24));
   printf("flag2 : %s\n", display_flags(cpsr2 >> 24)); 
 }
-/////end
+
 /*
  * CMN命令 
  */
-/////begin ch_detail_cmn_1
 void arm_cmn_sample_1() {
   uint32_t cpsr1,cpsr2;
   __asm__ (
@@ -65,11 +64,10 @@ void arm_cmn_sample_1() {
   printf("flag1 : %s\n", display_flags(cpsr1 >> 24));
   printf("flag2 : %s\n", display_flags(cpsr2 >> 24)); 
 }
-/////end
+
 /*
  * TST命令 
  */
-/////begin ch_detail_tst_1
 void arm_tst_sample_1() {
   uint32_t cpsr1,cpsr2;
   __asm__ (
@@ -88,11 +86,10 @@ void arm_tst_sample_1() {
   printf("flag1 : %s\n", display_flags(cpsr1 >> 24));
   printf("flag2 : %s\n", display_flags(cpsr2 >> 24)); 
 }
-/////end
+
 /*
  * TEQ命令 
  */
-/////begin ch_detail_teq_1
 void arm_teq_sample_1() {
   uint32_t cpsr1,cpsr2;
   __asm__ (
@@ -111,8 +108,6 @@ void arm_teq_sample_1() {
   printf("flag1 : %s\n", display_flags(cpsr1 >> 24));
   printf("flag2 : %s\n", display_flags(cpsr2 >> 24)); 
 }
-/////end
-
 
 int main() {
 

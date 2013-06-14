@@ -2,7 +2,6 @@
 #include <stdint.h>
 #include "../wrap.h"
 
-/////begin ch_detail_and_1
 /*
  * AND命令 
  */
@@ -18,8 +17,7 @@ void arm_and_sample_1() {
     : "r0","r1","r2","r3");
   printf("r0 = 0x%08X\n",d);
 }
-/////end
-/////begin ch_detail_orr_1
+
 /*
  * ORR命令 
  */
@@ -35,8 +33,7 @@ void arm_orr_sample_1() {
     : "r0","r1");
   printf("r0 = 0x%08X\n",d);
 }
-/////end
-/////begin ch_detail_eor_1
+
 /*
  * EOR命令 
  */
@@ -52,8 +49,7 @@ void arm_eor_sample_1() {
     : "r0","r1");
   printf("r0 = 0x%08X\n",d);
 }
-/////end
-/////begin ch_detail_bic_1
+
 /*
  * BIC命令 
  */
@@ -69,7 +65,7 @@ void arm_bic_sample_1() {
     : "r0","r1");
   printf("r0 = 0x%08X\n",d);
 }
-/////end
+
 
 int main() {
 

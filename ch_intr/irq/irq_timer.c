@@ -26,7 +26,6 @@
 #define PIC_TIMER01   0x10
 #define VIC_INTENABLE 0x4 /* 0x10 bytes */
 
-/////begin ch_intr_c_2
 /*
  * シリアルへ出力する
  */
@@ -49,8 +48,7 @@ void c_irq_handler() {
     *(TIMER0 + TIMER_INTCLR) = 1;         /////-----(h)                        
   }
 }
-/////end
-/////begin ch_intr_c_1
+
 /*
  * 処理関数
  */
@@ -71,4 +69,4 @@ void boot_main(void) {
 
   for(;;);                             /////-----(12)
 }
-/////end
+

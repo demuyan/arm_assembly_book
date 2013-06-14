@@ -3,7 +3,7 @@
 
               .global vectors_start
               .global vectors_end       
-/////begin ch_intr_swi_asm
+
 /*
  *  ベクターテーブル
  */ 
@@ -28,8 +28,8 @@ vectors_end:
 
 /* プログラム停止（無限ループ) */
 halt:         b     .
-/////end
-/////begin ch_intr_swi_asm_2
+
+
 /*
  * リセット処理
  * 最初はスーパーバイザモードで起動する
@@ -58,7 +58,7 @@ keep_loading:
 /* boot_main関数へ飛ぶ */
               BL    boot_main           //-----(5) 
               B     .
-/////end
+
 /*
  *  SWI発生時
  */               

@@ -23,7 +23,6 @@ const char *display_flags(int x)
 /*
  * LDR命令
  */
-/////begin ch_detail_ldr_1
 void arm_ldr_sample_1() {
   uint32_t rd0,rd00,rd1,rd2,rd3;
    
@@ -52,7 +51,6 @@ void arm_ldr_sample_1() {
 /*
  * LDR命令
  */
-/////begin ch_detail_ldr_2
 void arm_ldr_sample_2() {
   uint32_t rd0,rd00,rd1,rd2,rd3;
    
@@ -81,7 +79,6 @@ void arm_ldr_sample_2() {
 /*
  * LDR命令
  */
-/////begin ch_detail_ldr_3
 void arm_ldr_sample_3() {
   uint32_t rd0,rd00,rd1,rd2,rd3;
    
@@ -113,7 +110,6 @@ void arm_ldr_sample_3() {
 /*
  * LDR命令
  */
-/////begin ch_detail_ldria_1
 void arm_ldria_sample_1() {
   uint32_t rd0,rd00,rd1,rd2,rd3;
    
@@ -145,8 +141,6 @@ void arm_ldria_sample_1() {
   printf("r3 = 0x%08X\n",rd3); 
 
 }
-/////end
-/////begin ch_detail_ldrdb_1
 void arm_ldrib_sample_1() {
   uint32_t rd0,rd00,rd1,rd2,rd3;
    
@@ -178,8 +172,7 @@ void arm_ldrib_sample_1() {
   printf("r3 = 0x%08X\n",rd3); 
 
 }
-/////end
-/////begin ch_detail_ldrda_1
+
 void arm_ldrda_sample_1() {
   uint32_t rd0,rd00,rd1,rd2,rd3;
    
@@ -211,8 +204,7 @@ void arm_ldrda_sample_1() {
   printf("r3 = 0x%08X\n",rd3); 
 
 }
-/////end
-/////begin ch_detail_ldrdb_1
+
 void arm_ldrdb_sample_1() {
   uint32_t rd0,rd00,rd1,rd2,rd3;
    
@@ -244,9 +236,7 @@ void arm_ldrdb_sample_1() {
   printf("r3 = 0x%08X\n",rd3); 
 
 }
-/////end
 
-//
 int main() {
 
   WRAP("ch_detail_ldr_1_a",arm_ldr_sample_1);

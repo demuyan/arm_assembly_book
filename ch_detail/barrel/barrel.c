@@ -5,7 +5,6 @@
 /*
  * バレルシフタ未使用
  */
-/////begin ch_detail_barrel_1
 void arm_barrel_sample_1() {
   uint32_t rd1;
   __asm__ (
@@ -19,12 +18,10 @@ void arm_barrel_sample_1() {
     : "r0","r1","r2");
   printf("rd1 = %d\n",rd1);
 }
-/////end
 
 /*
  * バレルシフタ使用
  */
-/////begin ch_detail_barrel_2
 void arm_barrel_sample_2() {
   uint32_t rd1;
   __asm__ (
@@ -37,7 +34,6 @@ void arm_barrel_sample_2() {
     : "r0","r1","r2");
   printf("rd1 = %d\n",rd1);
 }
-/////end
 
 int main() {
 

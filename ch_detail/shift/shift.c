@@ -4,7 +4,6 @@
 /*
  * 加算命令のみで値を16倍する
  */
-/////begin ch_detail_shift_1
 void arm_shift_1(void) {
   uint32_t d;
   __asm__ (
@@ -20,11 +19,10 @@ void arm_shift_1(void) {
 
   printf("r0 = %d\n",d);
 }
-/////end
+
 /*
  * シフト命令を使って16倍する
  */
-/////begin ch_detail_shift_2
 void arm_shift_2(void) {
   uint32_t d;
   __asm__ (
@@ -37,11 +35,10 @@ void arm_shift_2(void) {
 
   printf("r0 = %d\n",d);
 }
-/////end
+
 /*
  * 値を７倍する
  */
-/////begin ch_detail_shift_3
 void arm_shift_3(void) {
   uint32_t rd0;
   __asm__ (
@@ -57,11 +54,10 @@ void arm_shift_3(void) {
 
   printf("r0 = %d\n",rd0);
 }
-/////end
+
 /*
  * 値を７倍する
  */
-/////begin ch_detail_shift_4
 void arm_shift_4(void) {
   uint32_t rd0;
   __asm__ (
@@ -75,11 +71,10 @@ void arm_shift_4(void) {
 
   printf("r0 = %d\n",rd0);
 }
-/////end
+
 /*
  * 論理シフト
  */
-/////begin ch_detail_logical_shift_1
 void arm_logical_shift_1() {
   int32_t rd0,rd1,rd2;
   __asm__ (
@@ -97,12 +92,10 @@ void arm_logical_shift_1() {
   printf("r1 = %d(0x%08x)\n",rd1, rd1);
   printf("r2 = %d(0x%08x)\n",rd2, rd2);
 }
-/////end
 
 /*
  * 正の値を算術シフトする
  */
-/////begin ch_detail_arithmetic_shift_1
 void arm_arithmetic_shift_1() {
   int32_t rd0,rd1;
   __asm__ (
@@ -117,11 +110,10 @@ void arm_arithmetic_shift_1() {
   printf("r0 = %d(0x%08x)\n",rd0, rd0);
   printf("r1 = %d(0x%08x)\n",rd1, rd1);
 }
-/////end
+
 /*
  * 負の値を算術シフトする
  */
-/////begin ch_detail_arithmetic_shift_2
 void arm_arithmetic_shift_2() {
   int32_t rd0,rd1;
   __asm__ (
@@ -136,11 +128,10 @@ void arm_arithmetic_shift_2() {
   printf("r0 = %d(0x%08x)\n",rd0, rd0);
   printf("r1 = %d(0x%08x)\n",rd1, rd1);
 }
-/////end
+
 /*
  * 論理シフト
  */
-/////begin ch_detail_arithmetic_shift_3
 void arm_arithmetic_shift_3() {
   int32_t rd0, rd1,rd2;
   __asm__ (
@@ -158,11 +149,10 @@ void arm_arithmetic_shift_3() {
   printf("r1 = %d(0x%08x)\n",rd1, rd1);
   printf("r2 = %d(0x%08x)\n",rd2, rd2);
 }
-/////end
+
 /*
  * ローテートシフト
  */
-/////begin ch_detail_rotate_shift_1
 void arm_rotate_shift_1() {
   int32_t rd0,rd1,rd2,rd3,rd4;
   __asm__ (
@@ -185,11 +175,10 @@ void arm_rotate_shift_1() {
   printf("r3 = %d(0x%08x)\n",rd3, rd3);
   printf("r4 = %d(0x%08x)\n",rd4, rd4);
 }
-/////end
+
 /*
  * ローテートシフト
  */
-/////begin ch_detail_rotate_shift_2
 void arm_rotate_shift_2() {
   int32_t rd1,rd2,rd3,rd4,rd5,rd6,rd7,rd8,rd9,rd10;
   __asm__ (
@@ -209,7 +198,6 @@ void arm_rotate_shift_2() {
 
   printf("r2=%d\n",rd1);  
 }
-/////end
 
 int main() {
 

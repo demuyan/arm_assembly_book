@@ -5,7 +5,6 @@
 /*
  * 無条件分岐命令
  */
-/////begin ch_detail_b_1
 void arm_b_sample_1() {
   uint32_t d;
   __asm__ (
@@ -18,11 +17,10 @@ void arm_b_sample_1() {
     : "r0");
   printf("r0 = 0x%08X\n",d);
 }
-/////end
+
 /*
  * 分岐命令（条件設定あり）
  */
-/////begin ch_detail_b_2
 void arm_b_sample_2() {
   uint32_t d;
   __asm__ (
@@ -40,11 +38,10 @@ void arm_b_sample_2() {
     : "r0","r1","r2");
   printf("r2 = %d\n",d);
 }
-/////end
+
 /*
  * リンク付き分岐命令
  */
-/////begin ch_detail_bl_1
 void arm_bl_sample_1() {
   uint32_t d;
   __asm__ (
@@ -59,7 +56,7 @@ void arm_bl_sample_1() {
     : "r0", "r14");
   printf("r0 = %d\n",d);
 }
-/////end
+
 int main() {
 
   WRAP("ch_detail_b_1_a",arm_b_sample_1);

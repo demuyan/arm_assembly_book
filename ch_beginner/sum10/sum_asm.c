@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-/////begin ch_beginner_sum_1
 int sum(int limit)
 {
    int i,total=0;
@@ -17,7 +16,6 @@ int sum(int limit)
     );
    return total;
 }
-/////end
 
 int main()
 {

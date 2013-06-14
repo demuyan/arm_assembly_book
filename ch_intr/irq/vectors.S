@@ -3,7 +3,7 @@
 
               .global vectors_start
               .global vectors_end       
-/////begin ch_intr_asm_1
+
 /*
  *  ベクターテーブル
  */ 
@@ -29,8 +29,8 @@ vectors_end:
 
 /* プログラム停止（無限ループ) */
 halt:         b     .
-/////end
-/////begin ch_intr_asm_2
+
+
 /*
  * リセット処理
  * 最初はスーパーバイザモードで起動する
@@ -66,7 +66,7 @@ keep_loading:
 /* boot_main関数へ飛ぶ */
               BL    boot_main           //-----(7) 
               B     .
-/////end
+
 /*
  *  IRQ発生時
  */               
